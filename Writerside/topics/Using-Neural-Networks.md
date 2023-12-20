@@ -85,7 +85,7 @@ sample_fnn = FullyConnectedNeuralNetwork('sample_fnn', _layer_info_, device)
 import torch
 sample_fnn.set_loss_function(torch.nn.L1Loss)
 ```
-<p>各种损失函数的信息可以参考<a href="https://pytorch.org/docs/stable/nn.html#loss-functions">损失函数--pytorch 2.0 doc</a>以及<a href="https://datawhalechina.github.io/thorough-pytorch/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.1%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.html">如何自定义损失函数</a>。</p>
+<p>各种损失函数的信息可以参考<a href="https://pytorch.org/docs/stable/nn.html#loss-functions">损失函数--pytorch 2.0 doc</a>以及<a href="https://datawhalechina.github.io/thorough-pytorch/第六章/6.1%20自定义损失函数.html">如何自定义损失函数</a>。</p>
 
 ### 设置优化方式 {id="optim"}
 优化方式是指如何根据损失函数的值修改神经网络的内部参数。常见的方法有随机梯度下降方法（**SGD**）、自适应时刻估计方法（**Adam**）等，更多内容可见：
@@ -116,7 +116,7 @@ sample_fnn.enable_reduce_lr(
     min_lr=1e-4
 )
 ```
-<p>具体学习率的设置规则以及相关参数可以参考<a href="https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate">how to adjust learning rate--pytorch 2.0 doc</a>以及<a href="https://datawhalechina.github.io/thorough-pytorch/%E7%AC%AC%E5%85%AD%E7%AB%A0/6.2%20%E5%8A%A8%E6%80%81%E8%B0%83%E6%95%B4%E5%AD%A6%E4%B9%A0%E7%8E%87.html#id2">自定义学习率变化规则</a>。</p>
+<p>具体学习率的设置规则以及相关参数可以参考<a href="https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate">how to adjust learning rate--pytorch 2.0 doc</a>以及<a href="https://datawhalechina.github.io/thorough-pytorch/第六章/6.2%20动态调整学习率.html#id2">自定义学习率变化规则</a>。</p>
 
 ### 设置早停规则 {id="earlySt"}
 早停（EarlyStop）是一种避免神经网络过拟合的训练策略，当模型在训练时出现过拟合的迹象时，早停可以较为及时地停止模型地训练。`FullyConnectedNeuralNetwork`类型提供`enable_early_stopping`方法，设置模型训练的早停规则。该方法的签名如下：

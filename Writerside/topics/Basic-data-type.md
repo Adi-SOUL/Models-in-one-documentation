@@ -277,8 +277,9 @@ Models_in_one.utils.data.split_dataset(
 ```
 `ratio`指定分割后第一个子数据库在原始数据库中的占比， `shuffle`指定分割前是否打乱原始数据库，如果原始数据库数据量不足以支撑分割，将抛出`ValueError`。
 
-## 内建DataSets
-`Models_in_one.utils.data`模块中提供了一些内建的标准`DataSet`类型数据库。这些数据库是在**长度200mm，直径10mm的丝驱动单节段通用连续体机器人**上采集到的**末端位置信息到驱动丝长的映射**。
+## 内建DataSets {id="built_in"}
+
+`Models_in_one.utils.data`模块中提供了一些内建的标准`DataSet`类型数据库。这些数据库是在长度200mm，直径10mm的丝驱动单节段通用连续体机器人上采集到的末端位置信息到驱动丝长的映射。
 
 你可以使用数据集名称在`DataSet.all_set`中索引数据集，或者采用如下语句导入：
 ```python
@@ -288,7 +289,7 @@ from Models_in_one.utils.data.builtin import [Models_in_one.utils.data.builtin�
 <tabs>
     <tab title="单一数据库">
 <table>
-<tr><td><code>Models_in_one.utils.data.builtin</code> <br> 中对应变量名</td><td>数据集 <br> 名称</td><td>采集轨迹</td><td>数据集大小</td></tr>
+<tr><td><code>Models_in_one.utils.data.builtin</code>中对应变量名</td><td>数据集名称</td><td>采集轨迹</td><td>数据集大小</td></tr>
 <tr><td><code>dataset_round_24</code></td><td>round_24</td><td>圆形，半径24mm</td><td>600</td></tr>
 <tr><td><code>dataset_round_26</code></td><td>round_26</td><td>圆形，半径26mm</td><td>651</td></tr>
 <tr><td><code>dataset_round_30</code></td><td>round_30</td><td>圆形，半径30mm</td><td>751</td></tr>
@@ -309,7 +310,7 @@ from Models_in_one.utils.data.builtin import [Models_in_one.utils.data.builtin�
     </tab>
     <tab title="融合数据库">
     <table>
-<tr><td><code>Models_in_one.utils.data.builtin</code> <br> 中对应变量名</td><td>数据集 <br> 名称</td><td>包含单一数据库名称</td><td>数据集大小</td></tr>
+<tr><td><code>Models_in_one.utils.data.builtin</code>中对应变量名</td><td>数据集名称</td><td>包含单一数据库名称</td><td>数据集大小</td></tr>
 <tr><td><code>dataset_round</code></td><td>round</td><td>round_24、round_26、round_30、round_32</td><td>2802</td></tr>
 <tr><td><code>dataset_square</code></td><td>square</td><td>square_30、square_32、square_36、square_40</td><td>3452</td></tr>
 <tr><td><code>dataset_all</code></td><td>all</td><td>round、square</td><td>6254</td></tr>
