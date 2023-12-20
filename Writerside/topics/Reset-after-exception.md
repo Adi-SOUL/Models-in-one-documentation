@@ -1,8 +1,5 @@
 # Reset after exception
 
-
-## 错误修正方法（Models_in_one.utils.reset_after_exception）
-
 <note>
 如果你不需要使用电机，你没有必要使用这个修饰器
 </note>

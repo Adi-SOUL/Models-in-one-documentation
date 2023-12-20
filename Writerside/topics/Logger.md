@@ -1,6 +1,6 @@
 # Logger
 
-## 日志文件模块（Models_in_one.Log模块）
+## 日志文件模块（Models_in_one.Log）
 
 `Models_in_one`模块提供日志类`Log`，用于显示或将日志写入文件，该类不能被实例化，请使用类方法。
 
