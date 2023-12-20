@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="hi"
+                 name="Models-in-one"
+                 start-page="Welcome.md">
+
+    <toc-element topic="Welcome.md"/>
+    <toc-element topic="how-to-install.md"/>
+    <toc-element topic="Basic-data-type.md"/>
+    <toc-element topic="File-IO.md"/>
+    <toc-element topic="Using-Neural-Networks.md"/>
+    <toc-element topic="Hardware.md"/>
+    <toc-element topic="Logger.md"/>
+    <toc-element topic="Reset-after-exception.md"/>
+    <toc-element topic="Special-Thanks.md"/>
+</instance-profile>
