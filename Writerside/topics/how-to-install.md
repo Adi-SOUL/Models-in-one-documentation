@@ -30,6 +30,9 @@
     从 <a href="https://github.com/Adi-SOUL/Models-in-one/releases"> GitHub releases</a> 获取最新的安装文件压缩包，解压后然后使用如下命令进行安装：
     <code-block lang="shell">./install_[版本号].bat</code-block>
     或直接双击文件安装。
+<note>
+<p>请使用管理员模式运行</p>
+</note>
     </step>
 </procedure>
 <warning>
