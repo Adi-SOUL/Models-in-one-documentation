@@ -12,6 +12,7 @@
     <toc-element topic="File-IO.md"/>
     <toc-element topic="Using-Neural-Networks.md"/>
     <toc-element topic="Hardware.md"/>
+    <toc-element topic="Simulator.md"/>
     <toc-element topic="Logger.md"/>
     <toc-element topic="Reset-after-exception.md"/>
     <toc-element topic="Special-Thanks.md"/>

@@ -69,7 +69,7 @@ data_from_tensor = Data(tensor)
 ## DataSet类型
 `DataSet`类型是参与神经网络训练的重要类型，它提供了关于有监督神经网络训练标签映射以及训练集组织的有关方法。
 <deflist collapsible="true">
-    <def title="all_set: class variable">
+    <def title="all_sets: class variable">
         <a anchor="all_set">字典，记录所有已经创建过的<code>DataSet</code>类型变量</a>
     </def>
     <def title="mapping">
@@ -114,13 +114,13 @@ data_from_tensor = Data(tensor)
 
 <warning>注意，默认情况下，<code>DataSet</code>类型的变量对其内容物是类型敏感的，也就是说，你不能创建包含多种`Data`的`DataSet`变量。有关`DataSet`类型的映射类型，详情参见 <a anchor="data_2_2_7">DataSet中的类型检查</a></warning>
 
-`DataSet`类型共有一个字典`DataSet.all_set`记录所有已经创建过的`DataSet`类型变量，你可以使用`DataSet`类型变量创建时确定的名称进行索引。例如 ：
+`DataSet`类型共有一个字典`DataSet.all_sets`记录所有已经创建过的`DataSet`类型变量，你可以使用`DataSet`类型变量创建时确定的名称进行索引。例如 ：
 {id="all_set"}
 
 ```python
 from Models_in_one.utils.data import DataSet
 sample_dataset: DataSet = DataSet(name='sample_dataset')
-DataSet.all_set['sample_dataset']  # sample_dataset
+DataSet.all_sets['sample_dataset']  # sample_dataset
 ```
 ### 在DataSet中添加映射关系 {id="dataset_mapping"}
 
@@ -281,7 +281,7 @@ Models_in_one.utils.data.split_dataset(
 
 `Models_in_one.utils.data`模块中提供了一些内建的标准`DataSet`类型数据库。这些数据库是在长度200mm，直径10mm的丝驱动单节段通用连续体机器人上采集到的末端位置信息到驱动丝长的映射。
 
-你可以使用数据集名称在`DataSet.all_set`中索引数据集，或者采用如下语句导入：
+你可以使用数据集名称在`DataSet.all_sets`中索引数据集，或者采用如下语句导入：
 ```python
 from Models_in_one.utils.data.builtin import [Models_in_one.utils.data.builtin中对应变量名]
 ```
