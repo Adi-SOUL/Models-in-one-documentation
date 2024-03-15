@@ -31,14 +31,15 @@ Models_in_one.utils.dll_helper.DllBase(
 
 <deflist collapsible="true">
 <def title="get_position()">
-获得NDI标记球在坐标系中的位置
+获得NDI标记球（或磁导航标记）在坐标系中的位置
 </def>
 </deflist>
 
 `NDIReader`类型用于与NDI光学测量单元交互，签名如下：
 ```python
 Models_in_one.utils.hardware.NDI.NDIReader(
-    rom: str   # .rom 文件位置
+    rom:  str   # .rom 文件位置
+    mode: str   # in ['Auto', 'Optical', 'Aurora]
 )
 ```
 
@@ -48,6 +49,15 @@ from Models_in_one.utils.hardware.NDI import NDIReader
 ndi_reader = NDIReader('./sample.rom')
 res_flag, position = ndi_reader.get_position()
 ```
+根据设定的mode参数，NDIReader 拥有不同的表现：
+
+| `mode`  | 作用                                    |
+|---------|---------------------------------------|
+| Auto    | NDIReader自动识别设备为光学或电磁测量单元，优先连接电磁测量单元。 |
+| Optical | 连接光学测量单元。                             |
+| Aurora  | 连接电磁测量单元。                             |
+
+<warning>当同时使用多个测量单元时，请不要使用<code>Auto</code>模式。</warning>
 <note>
 <code>Models_in_one</code>在目录<path>./others/NDI_rom</path>下提供了一些标定过的<path>.rom</path>文件，请结合实际坐标系合理使用！
 </note>
