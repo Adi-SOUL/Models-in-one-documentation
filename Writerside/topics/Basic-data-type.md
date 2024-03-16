@@ -112,7 +112,7 @@ data_from_tensor = Data(tensor)
 
 <warning>初始化一个<code>DataSet</code>类型的变量需要一个独有的数据库名称</warning>
 
-<warning>注意，默认情况下，<code>DataSet</code>类型的变量对其内容物是类型敏感的，也就是说，你不能创建包含多种`Data`的`DataSet`变量。有关`DataSet`类型的映射类型，详情参见 <a anchor="data_2_2_7">DataSet中的类型检查</a></warning>
+<warning>注意，默认情况下，<code>DataSet</code>类型的变量对其内容物是类型敏感的，也就是说，你不能创建包含多种<code>Data</code>的<code>DataSet</code>变量。有关<code>DataSet</code>类型的映射类型，详情参见 <a anchor="data_2_2_7">DataSet中的类型检查</a></warning>
 
 `DataSet`类型共有一个字典`DataSet.all_sets`记录所有已经创建过的`DataSet`类型变量，你可以使用`DataSet`类型变量创建时确定的名称进行索引。例如 ：
 {id="all_set"}
@@ -226,7 +226,7 @@ DataSet.set_check_flag(False)  # 关闭所有DataSet类型的变量的类型检�
 DataSet.set_check_flag(True)  # 启用所有DataSet类型的变量的类型检查功能
 ```
 <warning>
-    <p>需要注意的是，当类型检查功能被重新启用时，<code>DataSet</code>会重新检查<code>DataSet.all_set</code>中记录的所有数据库的类型关系，当遇到不满足要求的数据库，会抛出异常<code>DataTypeError</code>。</p>    
+    <p>需要注意的是，当类型检查功能被重新启用时，<code>DataSet</code>会重新检查<code>DataSet.all_sets</code>中记录的所有数据库的类型关系，当遇到不满足要求的数据库，会抛出异常<code>DataTypeError</code>。</p>    
 </warning>
 
 ```python
