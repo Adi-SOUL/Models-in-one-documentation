@@ -37,7 +37,7 @@ Models_in_one.utils.dll_helper.DllBase(
 
 **导入方法：**
 ```python 
-from Models_in_one.utils.hardware import NDIReader
+from Models_in_one.utils.hardware.NDI import NDIReader
 ```
 
 <deflist collapsible="true">
@@ -88,7 +88,7 @@ ROM_PATH_20230914 = './others/NDI_rom/20230914.rom'
 
 **导入方法：**
 ```python 
-from Models_in_one.utils.hardware import MotorController
+from Models_in_one.utils.hardware.Motors import MotorController
 ```
 
 <deflist collapsible="true">
@@ -159,7 +159,7 @@ motor.close()
 
 **导入方法：**
 ```python 
-from Models_in_one.utils.hardware import MotorJogMode
+from Models_in_one.utils.hardware.Motors import MotorJogMode
 ```
 
 <deflist collapsible="true">
