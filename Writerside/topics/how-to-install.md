@@ -48,6 +48,12 @@ pip install -r requriements.txt
 ```
 然后复制本项目源码至目标项目的根目录下。
 
+<warning>
+<p>
+如果你想使用可视化运动学仿真程序<path>VisCR</path>，请不要使用这种安装方式。
+</p>
+</warning>
+
 
 
 <seealso>

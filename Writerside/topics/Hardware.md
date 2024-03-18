@@ -43,19 +43,21 @@ Models_in_one.utils.hardware.NDI.NDIReader(
 )
 ```
 
-**当创建`NDIReader`实例对象时，程序会初始化NDI设备。你不需要提供NDI接入的COM号，程序会自动扫描NDI的接入情况。**`NDIReader`类型提供`get_position`方法，方法返回一个元组，元组的第一个值为一个`bool`类型变量，用于表示是否成功获得标记球位置，第二个值为一个`Data`类型变量，表示成功获取时，NDI标记球在`.rom`文件定义坐标系下的位置：
+**当创建`NDIReader`实例对象时，程序会初始化NDI设备。你不需要提供NDI接入的COM号，程序会自动扫描NDI的接入情况。**`NDIReader`类型提供`get_position`方法，
+方法返回一个元组，元组的第一个值为一个`bool`类型变量，用于表示是否成功获得标记球位置，第二个值为一个`Data`类型变量，该变量的意义与所连接的设备相关：
 ```python
 from Models_in_one.utils.hardware.NDI import NDIReader
-ndi_reader = NDIReader('./sample.rom')
+ndi_reader = NDIReader('./sample.rom', mode='Auto')
 res_flag, position = ndi_reader.get_position()
 ```
 根据设定的mode参数，NDIReader 拥有不同的表现：
 
-| `mode`  | 作用                                    |
-|---------|---------------------------------------|
-| Auto    | NDIReader自动识别设备为光学或电磁测量单元，优先连接电磁测量单元。 |
-| Optical | 连接光学测量单元。                             |
-| Aurora  | 连接电磁测量单元。                             |
+| `mode`  | 作用                                    | 对应`get_position`方法返回值            |
+|---------|---------------------------------------|----------------------------------|
+| Auto    | NDIReader自动识别设备为光学或电磁测量单元，优先连接电磁测量单元。 | 见下                               |
+| Optical | 连接光学测量单元。                             | 返回标记球在<path>.rom</path>文件坐标系下的位置 |
+| Aurora  | 连接电磁测量单元。                             | 返回各个磁导航标记的转换矩阵                   |
+
 
 <warning>当同时使用多个测量单元时，请不要使用<code>Auto</code>模式。</warning>
 <note>
