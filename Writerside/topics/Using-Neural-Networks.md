@@ -8,6 +8,7 @@
 ```python 
 from Models_in_one.models import model_templates
 ```
+
 ## 模型基类（BaseModel）
 `BaseModel`类型是本模块所有神经网络模型的基类，所有后续创建的神经网络模型严格继承于`BaseModel`类型。`BaseModel`类型提供神经网络从构建、设置到训练的全部方法。
 
@@ -16,7 +17,14 @@ from Models_in_one.models import model_templates
 </warning>
 
 ## 全连接神经网络（FullyConnectedNeuralNetwork）{id="FNN"}
+
 全连接神经网络是一种十分基础的神经网络结构，其每一层的每一个节点都与上下层节点全部连接。具体的全连接神经网络介绍可见：
+
+**导入方法：**
+```python 
+from Models_in_one.models.model_templates import FullyConnectedNeuralNetwork
+```
+
 
 > 知乎专栏： [深度学习开端|全连接神经网络](https://zhuanlan.zhihu.com/p/104576756)
 >
@@ -286,6 +294,13 @@ output_data: Data = sample_fnn.predict(inputs=input_data, _device_=device)
 
 ## 循环神经网络（RecurrentNeuralNetwork）
 循环神经网络是一种使用序列数据或时序数据的人工神经网络。其中长短期记忆模型（LSTM）通过引入门控机制，解决了传统意义上的循环神经网络具有的梯度消失和梯度爆炸的问题，在长序列上拥有更好的表现。具体介绍可以参见：
+
+**导入方法：**
+```python 
+from Models_in_one.models.model_templates import RecurrentNeuralNetwork
+```
+
+
 > Wikipedia：[Recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_network)
 >
 > 论文：[LSTM 论文原文](https://www.bioinf.jku.at/publications/older/2604.pdf)
@@ -303,6 +318,12 @@ Models_in_one.models.model_templates.RecurrentNeuralNetwork(
 参数rnn_kwargs的设计参见[RNN--pytorch 2.0 doc](https://pytorch.org/docs/stable/generated/torch.nn.RNN.html#rnn) 以及[LSTM--pytorch 2.0 doc](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html#lstm)。
 
 ## 从序列构建神经网络（NeuralNetworkFromSequential）{id="seq"}
+
+**导入方法：**
+```python 
+from Models_in_one.models.model_templates import NeuralNetworkFromSequential
+```
+
 `NeuralNetworkFromSequential`类型允许用户从模型列表构建神经网络，该类型签名如下：
 ```python
 Models_in_one.models.model_templates.NeuralNetworkFromSequential(
@@ -318,6 +339,12 @@ Models_in_one.models.model_templates.NeuralNetworkFromSequential(
 </warning>
 
 ## 从文件构建神经网络（NeuralNetworkFromFile） {id="file"}
+
+**导入方法：**
+```python 
+from Models_in_one.models.model_templates import NeuralNetworkFromFile
+```
+
 `NeuralNetworkFromFile`类型允许用户从保存的模型文件（<path>.pt</path>文件）重构神经网络模型，该类型的签名如下：
 ```python
 Models_in_one.models.model_templates.NeuralNetworkFromFile(
@@ -331,6 +358,11 @@ Models_in_one.models.model_templates.NeuralNetworkFromFile(
 有关`Tensorflow`框架与`pytorch`下的模型文件转换问题可以参阅此处：[how to convert a tensorflow model checkpoint to pytorch](https://saturncloud.io/blog/how-to-convert-a-tensorflow-model-checkpoint-to-pytorch/)，但是在最后不要保存`model.state_dict()`，而是整个模型。
 
 ## 自定义神经网络（NeuralNetworkFromUser）{id="user"}
+
+**导入方法：**
+```python 
+from Models_in_one.models.model_templates import NeuralNetworkFromUser
+```
 
 <p><code>NeuralNetworkFromUser</code>类型允许用户从更底层的<code>torch.nn.Module</code>创建神经网络模型，该类型的签名如下：</p>
 

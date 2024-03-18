@@ -12,6 +12,11 @@ from Models_in_one.utils import data
 
 ## Data类型
 
+**导入方法：**
+```python 
+from Models_in_one.utils.data import Data
+```
+
 <deflist collapsible="true">
     <def title="content">
        <code>Data</code>类型对象的内容
@@ -68,6 +73,12 @@ data_from_tensor = Data(tensor)
 
 ## DataSet类型
 `DataSet`类型是参与神经网络训练的重要类型，它提供了关于有监督神经网络训练标签映射以及训练集组织的有关方法。
+
+**导入方法：**
+```python 
+from Models_in_one.utils.data import DataSet
+```
+
 <deflist collapsible="true">
     <def title="all_sets: class variable">
         <a anchor="all_set">字典，记录所有已经创建过的<code>DataSet</code>类型变量</a>

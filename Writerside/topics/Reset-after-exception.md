@@ -1,5 +1,10 @@
 # Reset after exception
 
+**导入方法：**
+```python 
+from Models_in_one.utils import reset_after_exception
+```
+
 <note>
 如果你不需要使用电机，你没有必要使用这个修饰器
 </note>

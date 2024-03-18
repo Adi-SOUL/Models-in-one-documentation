@@ -4,6 +4,11 @@
 
 `Models_in_one`模块提供日志类`Log`，用于显示或将日志写入文件，该类不能被实例化，请使用类方法。
 
+**导入方法：**
+```python 
+from Models_in_one import Log
+```
+
 <deflist collapsible="true">
 <def title="init(file_name): class method">
 <a anchor="init">初始化设定<code>Logger</code></a>

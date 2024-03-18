@@ -20,6 +20,12 @@ from Models_in_one.utils import hardware
 <warning>由于硬件操作的特殊性，你不应该在一个项目中多次实例化同一个硬件交互类型</warning>
 
 ## 动态链接库（.dll）交互类型（DllBase）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware import DllBase
+```
+
 `DllBase`类型的签名如下，所有硬件交互类型均应当继承自`DllBase`类型：
 ```python
 Models_in_one.utils.dll_helper.DllBase(
@@ -28,6 +34,11 @@ Models_in_one.utils.dll_helper.DllBase(
 ```
 
 ## NDI交互类型（NDIReader）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware import NDIReader
+```
 
 <deflist collapsible="true">
 <def title="get_position()">
@@ -74,6 +85,12 @@ ROM_PATH_20230914 = './others/NDI_rom/20230914.rom'
 <warning><code>MotorController</code>与<code>MotorJogMode</code>不能同时实例化！</warning>
 
 ### MotorController （电机运动控制类型）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware import MotorController
+```
+
 <deflist collapsible="true">
 <def title="move(displacements)">
 <a anchor="move">按照指指定丝位移驱动电机</a>
@@ -139,6 +156,11 @@ motor.close()
 
 
 ### MotorJogMode （电机运动复位类型）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware import MotorJogMode
+```
 
 <deflist collapsible="true">
 <def title="move(command)">
