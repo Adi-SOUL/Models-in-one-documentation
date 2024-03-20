@@ -49,8 +49,8 @@ from Models_in_one.utils.hardware.NDI import NDIReader
 `NDIReader`类型用于与NDI光学测量单元交互，签名如下：
 ```python
 Models_in_one.utils.hardware.NDI.NDIReader(
-    rom:  str   # .rom 文件位置
-    mode: str   # in ['Auto', 'Optical', 'Aurora]
+    rom:  Optional[str] = None   # .rom 文件位置
+    mode: str                    # in ['Auto', 'Optical', 'Aurora]
 )
 ```
 
@@ -73,6 +73,8 @@ res_flag, position = ndi_reader.get_position()
 <warning>当同时使用多个测量单元时，请不要使用<code>Auto</code>模式。</warning>
 <note>
 <code>Models_in_one</code>在目录<path>./others/NDI_rom</path>下提供了一些标定过的<path>.rom</path>文件，请结合实际坐标系合理使用！
+
+当<code>mode</code> 被设置为<code>Aurora</code>时， <path>.rom</path>文件可以缺省。
 </note>
 
 ```python
