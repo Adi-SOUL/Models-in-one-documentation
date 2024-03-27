@@ -54,7 +54,7 @@ plt.figure(...)
 
 <table>
 <tr><td>序号</td><td>颜色</td><td>HEX</td><td>RGB</td></tr>
-<tr><td>1</td><td><format color="#000000" style="bold">███</format></td><td>#000000</td><td>(0, 0, 0)</td></tr>
+<tr><td>1</td><td><p style="color:rgba(0,0,0,1)">███</p></td><td>#000000</td><td>(0, 0, 0)</td></tr>
 <tr><td>2</td><td><format color="#8c8c8c" style="bold">███</format></td><td>#8c8c8c</td><td>(140, 140, 140)</td></tr>
 <tr><td>3</td><td><format color="#a0a0a0" style="bold">███</format></td><td>#a0a0a0</td><td>(160, 160, 160)</td></tr>
 <tr><td>4</td><td><format color="#c1c1c1" style="bold">███</format></td><td>#c1c1c1</td><td>(193, 193, 193)</td></tr>
