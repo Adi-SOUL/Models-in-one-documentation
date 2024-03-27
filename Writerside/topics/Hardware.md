@@ -1,6 +1,6 @@
 # Hardware
 
-本项目与硬件交互的方式主要为python与动态链接库（<path>.dll</path>）的交互。本模块提供与动态链接库（<path>.dll</path>）交互的必要类型，包括基类<code>DllBase</code>，NDI光学测量单元交互的<code>NDIReader</code>，以及固高运动控制卡交互类型<code>MotorController</code>与<code>MotorJogMode</code>。
+本项目与硬件交互的方式主要为python与动态链接库（<path>.dll</path>）的交互。本模块提供与动态链接库（<path>.dll</path>）交互的必要类型，包括基类<code>DllBase</code>，NDI光学/电磁测量单元交互的<code>NDIReader</code>，读取光纤数据的<code>LUNA</code>与<code>CompatibleLUNA</code>类型，以及固高运动控制卡交互类型<code>MotorController</code>与<code>MotorJogMode</code>。
 
 > 涉及`pyads`模块的操作请参阅：[pyads模块官方文档](https://pydas.readthedocs.io/en/latest/)
 
@@ -46,7 +46,7 @@ from Models_in_one.utils.hardware.NDI import NDIReader
 </def>
 </deflist>
 
-`NDIReader`类型用于与NDI光学测量单元交互，签名如下：
+`NDIReader`类型用于与NDI光学/电磁测量单元交互，签名如下：
 ```python
 Models_in_one.utils.hardware.NDI.NDIReader(
     rom:  Optional[str] = None   # .rom 文件位置
@@ -82,6 +82,62 @@ ROM_PATH_20220325 = './others/NDI_rom/20220325.rom'
 ROM_PATH_20221121 = './others/NDI_rom/20221121.rom'
 ROM_PATH_20230914 = './others/NDI_rom/20230914.rom'
 ```
+
+## LUNA数据读取类型（LUNA，CompatibleLUNA）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware.LUNA import LUNA, CompatibleLUNA
+```
+
+### LUNA 
+<code>LUNA</code>类型提供读取<path>LUNA</path>光纤设备的接口，该方法的签名如下：
+
+```python
+Models_in_one.utils.hardware.LUNA.LUNA(
+    address: str  # LUNA设备的IP地址
+    port: int     # LUNA设备的端口
+)
+```
+<code>LUNA</code>类型提供<code>get_data</code>方法，该方法接受一个<code>int</code>类型的参数，用于表示该方法将返回哪个通道的光线数据，留空时返回最近的一个通道的数据：
+
+```Python
+from Models_in_one.utils.hardware.LUNA import LUNA
+address: str = ...
+port: int = ...
+channel: int = ...
+
+luna = LUNA(address, port)
+channel_number, data = luna.get_data(channel)
+# 返回的通道是channel_number， 数据是data
+# 此时的channel_number和channel应该相等
+```
+
+### CompatibleLUNA
+<code>CompatibleLUNA</code>类型作为不在主程序中使用tcp/ip通讯的<path>LUNA</path>光纤设备的接口，当程序中有其他的模块与<code>LUNA</code>类型的读取有冲突时，应当使用该方法。该方法的签名如下：
+
+```python
+Models_in_one.utils.hardware.LUNA.CompatibleLUNA(
+    address: str  # LUNA设备的IP地址
+    port: int     # LUNA设备的端口
+)
+```
+
+<code>CompatibleLUNA</code>类型提供<code>get_data</code>方法，该方法接受一个<code>int</code>类型的参数，用于表示该方法将返回哪个通道的光线数据，留空时返回最近的一个通道的数据：
+
+```Python
+from Models_in_one.utils.hardware.LUNA import CompatibleLUNA
+address: str = ...
+port: int = ...
+channel: int = ...
+
+with CompatibleLUNA(address, port) as luna:
+    channel_number, data = luna.get_data(channel)
+    # 返回的通道是channel_number， 数据是data
+    # 此时的channel_number和channel应该相等
+```
+
+<warning><code>CompatibleLUNA</code>类型必须经过上下文管理语句使用！</warning>
 
 ## 固高运动控制卡交互类型（MotorController与MotorJogMode）
 <warning><code>MotorController</code>与<code>MotorJogMode</code>不能同时实例化！</warning>

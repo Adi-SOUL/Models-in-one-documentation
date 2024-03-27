@@ -39,6 +39,15 @@ def sample_func(step: int) -> list[numpy.ndarray]:
 
 <warning>一定要保证设置函数的参数与返回值与要求的保持一致</warning>
 
+<warning>由于<path>OpenGL</path>的坐标系问题，请使用本模块提供的旋转矩阵进行计算</warning>
+<deflist  collapsible="true">
+<def title="rotate_4x4(axis, angle)">
+返回绕<code>axis</code>旋转<code>angle</code>弧度的旋转矩阵。
+</def>
+<def title="displacement_4x4(x, y, z)">
+返回平移矩阵。
+</def>
+</deflist>
 
 ### 运行实例
 

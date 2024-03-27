@@ -27,6 +27,9 @@ from Models_in_one.utils.data import Data
     <def title="to_tensor(device)">
         返回<code>device</code>设备上的<code>Tensor</code>对象
     </def>
+    <def title="norm(**keyword_args)">
+        计算范数
+    </def>
 </deflist>
 <note>对于包含形状信息的内容（例如<code>list</code>与<code>Tensor</code>），其<code>type</code>属性包含其形状信息。</note>
 
@@ -255,7 +258,8 @@ sample_dataset.build_mapping(int_data_2, str_data)
 # 重新启用所有DataSet类型的变量的类型检查功能
 DataSet.set_check_flag(True)  # DataTypeError: 'invalid data type in type_check'
 ```
-❗**再次强调，如果你不明白并且不确定你在做什么，请不要关闭`DataSet`提供的类型检查功能！**
+<warning>再次强调，如果你不明白并且不确定你在做什么，请不要关闭<code>DataSet</code>提供的类型检查功能！</warning>
+
 
 ## 模块级别函数
 <deflist collapsible="true">
@@ -264,6 +268,9 @@ DataSet.set_check_flag(True)  # DataTypeError: 'invalid data type in type_check'
     </def>
     <def title="split_dataset(dataset, ratio, new_dataset_name_1, new_dataset_name_2, shuffle)">
        <a anchor="split">分割<code>DataSet</code>类型对象</a>
+    </def>
+    <def title="root_mean_square_error(y_true, y_pred)">
+       <a anchor="RMSE">计算均方根误差</a>
     </def>
 </deflist>
 
@@ -287,6 +294,16 @@ Models_in_one.utils.data.split_dataset(
 ) -> tuple[DataSet, DataSet]
 ```
 `ratio`指定分割后第一个子数据库在原始数据库中的占比， `shuffle`指定分割前是否打乱原始数据库，如果原始数据库数据量不足以支撑分割，将抛出`ValueError`。
+
+### 均方根误差 {id="RMSE"}
+`Models_in_one.utils.data`模块提供了函数`root_mean_square_error`与`RMSE`计算两个列表之间的均方根误差：
+```Python
+Models_in_one.utilis.data.root_mean_square_error(
+    y_true: list[Data], 
+    y_pred: list[Data]
+) -> Data
+```
+`RMSE`是`root_mean_square_error`别名
 
 ## 内建DataSets {id="built_in"}
 
