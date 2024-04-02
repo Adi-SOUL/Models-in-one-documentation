@@ -16,5 +16,6 @@
     <toc-element topic="Painter.md"/>
     <toc-element topic="Logger.md"/>
     <toc-element topic="Reset-after-exception.md"/>
+    <toc-element topic="Exceptions.md"/>
     <toc-element topic="Special-Thanks.md"/>
 </instance-profile>
