@@ -47,6 +47,9 @@ def sample_func(step: int) -> list[numpy.ndarray]:
 <def title="displacement_4x4(x, y, z)">
 返回平移矩阵。
 </def>
+<def title="default_one_step(step)">
+简单的实例仿真步函数
+</def>
 </deflist>
 
 ### 运行实例

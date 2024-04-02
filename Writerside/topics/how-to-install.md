@@ -35,6 +35,13 @@
 </note>
     </step>
 </procedure>
+
+<note>
+安装完成后，在命令行中使用如下命令查看帮助文档：
+<code-block lang="shell">
+python -m Models_in_one.utils.doc
+</code-block>
+</note>
 <warning>
     <p>如果<code>pytorch</code>不能正确识别GPU设备，请检查自身<code>cuda</code>以及<code>cudnn</code>安装情况，并从<a href="https://pytorch.org/get-started/previous-versions">PyTorch 版本页面</a>查找适合的版本，然后使用如下命令重新安装<code>pytorch</code>：</p>
     <code-block lang="shell">pip install [你查询到的pytorch版本]</code-block>

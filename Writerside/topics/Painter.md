@@ -48,6 +48,9 @@ plt.figure(...)
     <def title="hex_to_float(hex_color)">
     将HEX颜色转化为（0.0-1.0）的RGB颜色
     </def>
+    <def title="gradient_color_generator(color_1, color_2, total_num)">
+    返回两种颜色之间的渐变色的生成器
+    </def>
 </deflist>
 
 `Models_in_one.utilis.painter`中索引与颜色对应如下表：
