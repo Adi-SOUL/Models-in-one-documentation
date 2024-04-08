@@ -42,6 +42,20 @@
 python -m Models_in_one.utils.doc
 </code-block>
 </note>
+
+<note>
+<p>如果想在导入<code>Models_in_one</code>时加载所有子模块，请在导入前设置：</p>
+<code-block lang="python">
+import os
+os.environ['import_all_mio'] = 'True'
+</code-block>
+<p>如果想在禁用<code>Models_in_one</code>的版本更新检查，请在导入前设置：</p>
+<code-block lang="python">
+import os
+os.environ['check_mio_version'] = 'False'
+</code-block>
+</note>
+
 <warning>
     <p>如果<code>pytorch</code>不能正确识别GPU设备，请检查自身<code>cuda</code>以及<code>cudnn</code>安装情况，并从<a href="https://pytorch.org/get-started/previous-versions">PyTorch 版本页面</a>查找适合的版本，然后使用如下命令重新安装<code>pytorch</code>：</p>
     <code-block lang="shell">pip install [你查询到的pytorch版本]</code-block>

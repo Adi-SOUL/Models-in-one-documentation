@@ -403,6 +403,16 @@ fnn_from_user = NeuralNetworkFromUser('sample_fnn_user', device, __FNN__())
 ## 内建神经网络模型
 `Models_in_one.models.bulitin`模块内置了一系列已经定义并且完成设置的神经网络模型，现列举如下：
 
+
+<note>
+<p>当导入<code>builtin</code>时，默认行为是初始化全部的神经网络，如果只想创建需要的神经网络，请在导入前按照如下设置：</p>
+<code-block lang="python">
+import os
+os.environ['load_all'] = 'False'
+os.environ['load_pinn_2x2'] = 'True'  # 设置需要加载PINN_2x2
+</code-block>
+</note>
+
 <tabs>
 <tab title="FNN_3_2x2">
 <code-block lang="shell">
@@ -643,7 +653,7 @@ min_lr          : 0.0001
 ##########################################################################################
 </code-block>
 </tab>
-<tab title="NNIPS_2x2">
+<tab title="PINN_2x2">
 <code-block lang="shell">
 ##########################################################################################
 Name of this neural network: 
