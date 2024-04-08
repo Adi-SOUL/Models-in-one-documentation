@@ -67,3 +67,11 @@ Log.speak()  # 打开全部输出
 Log.speak(['info'])  # 打开info等级的输出
 Log.speak(['info', 'warning'])  # 打开info以及warning等级的输出
 ```
+
+<note>
+<p>在使用多进程程序时，<code>Log</code>提供多进程支持，以显示打印日志的进程，请在导入前按照如下设置：</p>
+<code-block lang="python">
+import os
+os.environ['log_multiprocessing_support'] = 'True'
+</code-block>
+</note>
