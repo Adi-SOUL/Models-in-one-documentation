@@ -95,6 +95,12 @@ from Models_in_one.utils.data import DataSet
     <def title="build_mappings(input_data_list, output_data_list)">
          <a anchor="dataset_mapping">批量建立<code>DataSet</code>类型对象的映射关系</a>
     </def>
+    <def title="change_mapping(input_data, output_data)">
+         <a anchor="dataset_change_mapping">修改<code>DataSet</code>类型对象的单一映射关系</a>
+    </def>
+    <def title="change_mappings(input_data_list, output_data_list)">
+         <a anchor="dataset_change_mapping">批量修改<code>DataSet</code>类型对象的映射关系</a>
+    </def>
     <def title="from_dict(input_dict, clear)">
          <a anchor="dataset_mapping">从字典建立<code>DataSet</code>类型对象的映射关系</a>
     </def>
@@ -166,6 +172,12 @@ sample_dataset_4: DataSet = DataSet(name='sample_dataset_4')
 sample_dataset_4.from_dict(mapping_relationships, clear=True)
 ```
 其中，`clear`表示是是否在添加映射关系前清零原数据集。
+
+### 在DataSet中修改映射关系 {id="dataset_change_mapping"}
+`DataSet`类型使用内建属性`mapping`记录映射关系。提供了`change_mapping`与`change_mappings`方法逐一与批量修改映射关系。
+<warning>
+当试图使用<code>change_mapping</code>与<code>change_mappings</code>创建新的映射关系时，会抛出异常<code>DataTypeError</code>。
+</warning>
 
 ### 获得DataSet中的映射信息 {id="get"}
 

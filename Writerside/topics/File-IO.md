@@ -72,3 +72,17 @@ sample_data: Data = Data([1, 2, 3])
 with DataFile('sample_csv.csv', 'w', 'utf-8') as sample_csv:
 	sample_csv.write(func=write_csv, content=sample_data)
 ```
+
+## <span id=file_2>模块级别函数</span>
+<deflist collapsible="true">
+<def title="time_for_filename()">
+    返回当前时间字符串
+</def>
+</deflist>
+
+<code-block lang="python">
+from Models_in_one.utils.file_io import time_for_filename
+string = time_for_filename()
+print(string)
+# 20240501_155339
+</code-block>
