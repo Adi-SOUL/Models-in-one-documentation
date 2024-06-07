@@ -165,6 +165,9 @@ from Models_in_one.utils.hardware.Motors import MotorController
 <def title="close()">
 <a anchor="close">关闭所有电机</a>
 </def>
+<def title="reset_from_last_log_file()">
+<a anchor="reset">用于在意外断电后恢复电机的初始状态</a>
+</def>
 </deflist>
 
 ```python
@@ -197,6 +200,13 @@ motor.tense(Data(5.))  # 与motor.move(Data([5., 5., 5., 5.]))相同
 from Models_in_one.utils.data import Data
 motor.slack(Data(5.))  # 与motor.move(Data([-5., -5., -5., -5.]))相同
 ```
+
+#### `reset_from_last_log_file` {id="reset"}
+`reset_from_last_log_file`方法用于在意外断电后恢复电机的初始状态。
+
+<warning>
+该方法调用完成后会退出整个程序！
+</warning>
 
 #### `open` {id="open"}
 

@@ -399,6 +399,9 @@ class __FNN__(nn.Module):
 
 fnn_from_user = NeuralNetworkFromUser('sample_fnn_user', device, __FNN__())
 ```
+<note>
+你可以通过调用该类的<code>call</code>方法调用从更底层的<code>torch.nn.Module</code>创建的神经网络模型
+</note>
 
 ## 内建神经网络模型
 `Models_in_one.models.bulitin`模块内置了一系列已经定义并且完成设置的神经网络模型，现列举如下：
