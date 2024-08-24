@@ -3,6 +3,11 @@
 ## 仿真类（QTSimulator）
 该模块提供与可视化仿真程序<path>VisCR</path>之间的交互类`QTSimulator`。仅需简单的步骤即可使用连续体机器人运动学可视化仿真。
 
+<note>
+<path>VisCR</path> 详情请见 <a href="https://github.com/Adi-SOUL/VisCR">此页面</a> 
+
+</note>
+
 **导入方法：**
 ```python 
 from Models_in_one.utils.connect_to_qt import QTSimulator

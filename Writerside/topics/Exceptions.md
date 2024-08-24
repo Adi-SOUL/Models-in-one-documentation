@@ -32,6 +32,9 @@ from Models_in_one.utils import errors
 <def title="InDevError">
 所调用的函数还在开发中时，将抛出此错误。
 </def>
+<def title="ATIInitFailedError">
+当<path>ATI</path>无法被初始化时，将抛出此错误。
+</def>
 <def title="NDIInitFailedError">
 当<path>NDI</path>无法被初始化时，将抛出此错误。
 </def>

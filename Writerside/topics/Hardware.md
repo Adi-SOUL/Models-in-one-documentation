@@ -33,6 +33,33 @@ Models_in_one.utils.dll_helper.DllBase(
 )
 ```
 
+## ATI交互类型（ATI）
+
+**导入方法：**
+```Python
+from Models_in_one.utils.hardware.ATI import ATI
+```
+
+<deflist collapsible="true">
+<def title="get_data(channel: Optional[int] = None)">
+获得ATI指定通道 <code>channel</code> 下的传感器度数
+</def>
+</deflist>
+
+`ATI`类型用于与ATI力传感器交互，签名如下：
+```python
+Models_in_one.utils.hardware.ATI.ATI(
+    port_name: str,   # 端口名称 
+    baudrate: int,   # 波特率
+    parity: int,   # 校验方式， 0：无校验，1：奇校验，2：偶校验
+    databit: int,  # 1字节的位数，7 or 8
+    stopbit: int  # 停止位
+)
+```
+
+当使用 <code>get_data(channel)</code> 方法时，会以<code>Data</code>类型返回指定通道传感器的度数，当<code>channel</code>为<code>None</code>
+或者为空时，以<code>List[Data]</code> 类型返回8个通道的度数。
+
 ## NDI交互类型（NDIReader）
 
 **导入方法：**
