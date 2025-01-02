@@ -12,7 +12,7 @@ from Models_in_one.utils import hardware
 如果你不清楚python如何与动态链接库交互，或是不清楚如何创建动态链接库，请参阅：
 <procedure title="">
 <p>Microsoft： <a href="https://learn.microsoft.com/zh-cn/cpp/build/walkthrough-creating-and-using-a-dynamic-link-library-cpp?view=msvc-170">使用C++编写自己的动态链接库</a></p>
-<p>博客：<a href="https://www.cnblogs.com/FHC1994/p/11421229.html">使用python调用动态链接库</a></p>
+<p>博客： <a href="https://www.cnblogs.com/FHC1994/p/11421229.html">使用python调用动态链接库</a></p>
 <p>Python doc： <a href="https://docs.python.org/3/library/ctypes.html">ctypes</a></p>
 </procedure>
 </note>
@@ -97,9 +97,9 @@ res_flag, position = ndi_reader.get_position()
 | Aurora  | 连接电磁测量单元。                             | 返回各个磁导航标记的转换矩阵                   |
 
 
-<warning>当同时使用多个测量单元时，请不要使用<code>Auto</code>模式。</warning>
+<warning>当同时使用多个测量单元时，请不要使用 <code>Auto</code> 模式。</warning>
 <note>
-<code>Models_in_one</code>在目录<path>./others/NDI_rom</path>下提供了一些标定过的<path>.rom</path>文件，请结合实际坐标系合理使用！
+<code>Models_in_one</code> 在目录 <path>./others/NDI_rom</path> 下提供了一些标定过的 <path>.rom</path> 文件，请结合实际坐标系合理使用！
 
 当<code>mode</code> 被设置为<code>Aurora</code>时， <path>.rom</path>文件可以缺省。
 </note>
@@ -164,10 +164,10 @@ with CompatibleLUNA(address, port) as luna:
     # 此时的channel_number和channel应该相等
 ```
 
-<warning><code>CompatibleLUNA</code>类型必须经过上下文管理语句使用！</warning>
+<warning><code>CompatibleLUNA</code> 类型必须经过上下文管理语句使用！</warning>
 
 ## 固高运动控制卡交互类型（MotorController与MotorJogMode）
-<warning><code>MotorController</code>与<code>MotorJogMode</code>不能同时实例化！</warning>
+<warning><code>MotorController</code> 与 <code>MotorJogMode</code> 不能同时实例化！</warning>
 
 ### MotorController （电机运动控制类型）
 
@@ -294,8 +294,7 @@ motor.move(command)
 | e         | #5 Back off       |
 | 0         | Kill all          |
 
-<warning>
-调用<code>move</code>方法并不会中止之前的调用，如需停止电机，请使用
+<warning>调用 <code>move</code> 方法并不会中止之前的调用，如需停止电机，请使用
 <code-block lang="python">
 motor.move('0')
 </code-block>

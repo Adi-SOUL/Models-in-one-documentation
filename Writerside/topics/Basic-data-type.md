@@ -2,7 +2,7 @@
 本模块提供了一个数据类型`Data`，作为本项目的基本数据类型；同时提供了用于组织、管理 `Data` 的类型`DataSet`。并在`Models_in_one.utilis.data.bulitin`中提供内建的相关数据库。
 
 <note>
-<p>本项目中的神经网络模型训练、部署、与操作系统、硬件的交互均使用<code>Data</code>类型</p>
+<p>本项目中的神经网络模型训练、部署、与操作系统、硬件的交互均使用 <code>Data</code> 类型</p>
 </note>
 
 **导入方法：**
@@ -19,19 +19,20 @@ from Models_in_one.utils.data import Data
 
 <deflist collapsible="true">
     <def title="content">
-       <code>Data</code>类型对象的内容
+        <code>Data</code> 类型对象的内容   
+        <note> 当 <code> content </code> 可被遍历时，可以直接对 <code> Data </code> 操作。 </note>
     </def>
     <def title="type">
-        <code>Data</code>类型对象的类型
+        <code>Data</code> 类型对象的类型
     </def>
     <def title="to_tensor(device)">
-        返回<code>device</code>设备上的<code>Tensor</code>对象
+        返回 <code>device</code> 设备上的 <code>Tensor</code> 对象
     </def>
     <def title="norm(**keyword_args)">
         计算范数
     </def>
 </deflist>
-<note>对于包含形状信息的内容（例如<code>list</code>与<code>Tensor</code>），其<code>type</code>属性包含其形状信息。</note>
+<note>对于包含形状信息的内容（例如 <code>list</code> 与 <code>Tensor</code> ），其 <code>type</code> 属性包含其形状信息。</note>
 
 你可以通过基本的赋值语句创建任何内容的`Data`变量，例如：
 
