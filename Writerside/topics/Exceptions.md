@@ -8,6 +8,9 @@ from Models_in_one.utils import errors
 ```
 
 <deflist collapsible="true">
+<def title="OSNotSupportError">
+当使用的操作系统不支持功能时，将抛出此错误。
+</def>
 <def title="CanNotReceiveBufferError">
 当程序无法发送数据到服务器时，将抛出此错误。
 </def>

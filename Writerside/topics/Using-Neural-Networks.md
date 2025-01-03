@@ -67,6 +67,9 @@ Models_in_one.models.model_templates.FullyConnectedNeuralNetwork(
 <def title="train(train_dataset, val_dataset, shuffle, lr, epochs, batch_size, save_path, vis)">
 <a anchor="train">网络训练</a>
 </def>
+<def title="interruptible_train(train_dataset, val_dataset, shuffle, lr, epochs, batch_size, save_path, vis)">
+<a anchor="interruptible_train">可以被中断的网络训练</a>
+</def>
 <def title="predict(inputs, _device_, keep_tensor)">
 <a anchor="output">获得模型输出</a>
 </def>
@@ -110,19 +113,25 @@ sample_fnn.set_optimizer(torch.optim.Adam)
 各种损失函数的信息可以参考[优化方法--pytorch 2.0 doc](https://pytorch.org/docs/stable/optim.html#algorithms)。
 
 ### 设置学习率规划 {id="lr"}
-变化的学习率（**前期大，后期小**）可以使得神经网络模型更快速，稳定地到达最佳状态。`FullyConnectedNeuralNetwork`类型提供`enable_reduce_lr`方法，用于规划模型的学习率变化。该方法接受一个类型为`torch.optim.lr_scheduler`的学习率规划器，以及对应的来自`pytorch`的设置参数`kwargs`，并将其用于当前神经网络模型的学习率规划。
+变化的学习率（**前期大，后期小**）可以使得神经网络模型更快速，稳定地到达最佳状态。`FullyConnectedNeuralNetwork`类型提供`enable_reduce_lr`方法，用于规划模型的学习率变化。该方法接受一个如下格式的列表：
+```python
+[
+    (
+        lr_scheduler  # torch.optim.lr_scheduler 对象
+        start_from  # 从该epoch开始作用
+        kwargs  # 字典对象，来自pytorch的设置参数
+    ),  # 第一个学习率规划器
+    (...),  # 第二个学习率规划器
+    ...
+]
+```
 
 例如指定`sample_fnn`的学习率变化方式为**一定时间内模型效果未好转自动下调学习率**（`torch.optim.lr_scheduler.ReduceLROnPlateau`）：
 ```python
 import torch
-sample_fnn.enable_reduce_lr(
-    torch.optim.lr_scheduler.ReduceLROnPlateau,
-    mode='min',
-    factor=.2,
-    patience=10,
-    verbose=False,
-    min_lr=1e-4
-)
+kwargs = {"mode": "min", "factor": .2, "patience": 10, "verbose": False, "min_lr": 1e-4}
+lr_list = [(torch.optim.lr_scheduler.ReduceLROnPlateau, 1, kwargs)]
+sample_fnn.enable_reduce_lr(lr_list)
 ```
 <p>具体学习率的设置规则以及相关参数可以参考<a href="https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate">how to adjust learning rate--pytorch 2.0 doc</a>以及<a href="https://datawhalechina.github.io/thorough-pytorch/第六章/6.2%20动态调整学习率.html#id2">自定义学习率变化规则</a>。</p>
 
@@ -216,7 +225,7 @@ The log file of Tensorboard is stored in
 </procedure>
 
 ### 训练模型 {id="train"}
-`FullyConnectedNeuralNetwork`类型提供`train`方法，用于对完成设置的神经网络模型进行训练。该方法的签名如下：
+`FullyConnectedNeuralNetwork`类型提供`train`方法，用于对完成设置的神经网络模型进行训练。该函数会返回当前最优的模型保存位置。该方法的签名如下：
 <warning>
 至少需要使用<code>set_loss_function</code>方法以及<code>set_optimizer</code>方法设置完成损失函数以及优化方式，才能进行训练工作！
 </warning>
@@ -231,7 +240,7 @@ Models_in_one.models.model_templates.FullyConnectedNeuralNetwork.train(
     batch_size: int,
     save_path: str,
     vis: bool = False
-) -> None
+) -> str
 ```
 <deflist collapsible="true">
 <def title="tran_dataset">
@@ -260,13 +269,16 @@ Models_in_one.models.model_templates.FullyConnectedNeuralNetwork.train(
 例如，在内建的数据集`dataset_all`上训练`sample_fnn`，只需要：
 ```python
 from Models_in_one.utils.data.builtin import dataset_all as dataset
-sample_fnn.train(dataset, None, False, 1e-3, 300, 64, "./save", False)
+saved_model_file_path = sample_fnn.train(dataset, None, False, 1e-3, 300, 64, "./save", False)
 final_loss: float = sample_fnn.history["train_loss"][-1]
 epochs: int = len(sample_fnn.history["train_loss"])
 used_time: float = sample_fnn.history["time"]
 log = f'Stopped at train loss: {final_loss}, used:{epochs} epochs in {used_time} s.'
 print(log)
 ```
+
+### 可以被中断的训练 {id="interruptible_train"}
+<p>参数与<a anchor="train">训练模型</a>一节中相同，与<code>train</code>的区别是可以使用 <shortcut>Ctrl+C</shortcut>中断训练过程，并使用当前已有的训练结果继续后续代码。</p>
 
 ### 获得模型输出 {id="output"}
 `FullyConnectedNeuralNetwork`类型提供`predict`方法，用于获得模型对于指定输入的输出。该方法接受两个变量：`Data`类型的`inputs`作为模型输入，以及来自`pytorch`的设备信息`device`。该方法的签名如下：

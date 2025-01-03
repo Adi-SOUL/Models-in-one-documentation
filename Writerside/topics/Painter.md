@@ -16,7 +16,7 @@ from Models_in_one.utilis.painter import DefaultPainter
 
 
 with DefaultPainter(plt, fig_size=(7, 7)) as default_painter:
-    ...  # Draw here, use default_painter instead of plt
+    ...  # Draw here, use default_painter instead of plt.figure
     
     default_painter.show()
     
@@ -48,7 +48,7 @@ plt.figure(...)
     <def title="hex_to_float(hex_color)">
     将HEX颜色转化为（0.0-1.0）的RGB颜色
     </def>
-    <def title="gradient_color_generator(color_1, color_2, total_num)">
+    <def title="gradient_color_generator(color_1, color_2, total_num, need_float=True)">
     返回两种颜色之间的渐变色的生成器
     </def>
 </deflist>
