@@ -64,6 +64,9 @@ Models_in_one.models.model_templates.FullyConnectedNeuralNetwork(
 <def title="summary(**kwargs)">
 <a anchor="summary">获得网络模型总览</a>
 </def>
+<def title="set_save_interval(save_interval)">
+<a anchor="interval">设置保存模型的间隔</a>
+</def>
 <def title="train(train_dataset, val_dataset, shuffle, lr, epochs, batch_size, save_path, vis)">
 <a anchor="train">网络训练</a>
 </def>
@@ -223,6 +226,9 @@ The log file of Tensorboard is stored in
 #################################################################
 </code-block>
 </procedure>
+
+### 设置模型保存间隔 {id="interval"}
+`set_save_interval`方法接受一个 `int`类型的参数`save_interval`，表示每隔`save_interval`个`epoch`保存一次模型。
 
 ### 训练模型 {id="train"}
 `FullyConnectedNeuralNetwork`类型提供`train`方法，用于对完成设置的神经网络模型进行训练。该函数会返回当前最优的模型保存位置。该方法的签名如下：
