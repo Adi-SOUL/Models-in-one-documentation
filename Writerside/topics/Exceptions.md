@@ -35,11 +35,23 @@ from Models_in_one.utils import errors
 <def title="InDevError">
 所调用的函数还在开发中时，将抛出此错误。
 </def>
-<def title="ATIInitFailedError">
-当<path>ATI</path>无法被初始化时，将抛出此错误。
+<def title="TensionSensorInitFailedError">
+当<path>TensionSensor</path>无法被初始化时，将抛出此错误。
+</def>
+<def title="CompatibleForceSensorOutOfWithBlockError">
+当在<code>with</code>语句块外使用<code>CompatibleForceSensor</code>时，将抛出此错误。
+</def>
+<def title="ForceSensorInitFailedError">
+当<code>ForceSensor</code>无法被初始化时，将抛出此错误。
+</def>
+<def title="CompatibleLUNAOutOfWithBlockError">
+当在<code>with</code>语句块外使用<code>CompatibleLUNA</code>时，将抛出此错误。
+</def>
+<def title="EtherCATInitFailedError">
+当<code>MotorWithEtherCAT</code>无法被初始化时，将抛出此错误。
 </def>
 <def title="NDIInitFailedError">
-当<path>NDI</path>无法被初始化时，将抛出此错误。
+当<code>NDI</code>无法被初始化时，将抛出此错误。
 </def>
 <def title="NotWithinTheOptionalRangeError">
 当给定的参数不在可选参数范围内时，将抛出此错误。

@@ -33,32 +33,89 @@ Models_in_one.utils.dll_helper.DllBase(
 )
 ```
 
-## ATI交互类型（ATI）
+## TensionSensor交互类型（TensionSensor）
 
 **导入方法：**
 ```Python
-from Models_in_one.utils.hardware.ATI import ATI
+from Models_in_one.utils.hardware.TensionSensor import TensionSensor
 ```
 
 <deflist collapsible="true">
 <def title="get_data(channel: Optional[int] = None)">
-获得ATI指定通道 <code>channel</code> 下的传感器度数
+获得TensionSensor指定通道 <code>channel</code> 下的传感器度数
 </def>
 </deflist>
 
-`ATI`类型用于与ATI力传感器交互，签名如下：
+`TensionSensor`类型用于与TensionSensor力传感器交互，签名如下：
 ```python
-Models_in_one.utils.hardware.ATI.ATI(
+Models_in_one.utils.hardware.TensionSensor.TensionSensor(
     port_name: str,   # 端口名称 
-    baudrate: int,   # 波特率
-    parity: int,   # 校验方式， 0：无校验，1：奇校验，2：偶校验
-    databit: int,  # 1字节的位数，7 or 8
-    stopbit: int  # 停止位
+    baudrate: int,    # 波特率
+    parity: int,      # 校验方式， 0：无校验，1：奇校验，2：偶校验
+    databit: int,     # 1字节的位数，7 or 8
+    stopbit: int      # 停止位
 )
 ```
 
 当使用 <code>get_data(channel)</code> 方法时，会以<code>Data</code>类型返回指定通道传感器的度数，当<code>channel</code>为<code>None</code>
 或者为空时，以<code>List[Data]</code> 类型返回8个通道的度数。
+
+## ForceSensor交互类型（ForceSensor， CompatibleForceSensor）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware.ForceSensor import ForceSensor
+```
+
+### ForceSensor
+<code>ForceSensor</code>类型提供读取<path>ATI</path>设备的接口，该方法的签名如下：
+
+```python
+Models_in_one.utils.hardware.ForceSensor.ForceSensor(
+    calibration_file: str  # ATI设备的标定文件位置
+)
+```
+<code>ForceSensor</code>类型提供<code>get_forces</code>方法，用于返回ATI设备的读数：
+
+```Python
+from Models_in_one.utils.hardware.ForceSensor import ForceSensor
+
+calibration_file: str = ...
+force_sensor = ForceSensor(calibration_file)
+forces = force_sensor.get_forces()  # Data 类型对象
+```
+
+### CompatibleForceSensor
+<code>CompatibleForceSensor</code>类型为<code>ForceSensor</code>类型的替代方案。该方法的签名如下：
+
+```python
+Models_in_one.utils.hardware.ForceSensor.CompatibleForceSensor(
+    calibration_file: str  # ATI设备的标定文件位置
+)
+```
+
+<code>CompatibleForceSensor</code>类型提供<code>get_forces</code>方法，用于返回ATI设备的读数：
+
+```Python
+from Models_in_one.utils.hardware.ForceSensor import CompatibleForceSensor
+
+calibration_file: str = ...
+
+with CompatibleForceSensor(calibration_file) as force_sensor:
+    forces = force_sensor.get_forces()  # Data 类型对象
+```
+
+<warning><code>CompatibleForceSensor</code> 类型必须经过上下文管理语句使用！</warning>
+
+<note>
+<code>Models_in_one</code> 在目录 <path>./others/calibration</path> 下提供了一些标定过的 <path>.cal</path> 文件，请合理使用！
+
+</note>
+
+```python
+CAL_216 = '.\others\calibration\FT43216.cal'
+CAL_217 = '.\others\calibration\FT43217.cal'
+```
 
 ## NDI交互类型（NDIReader）
 
@@ -166,7 +223,7 @@ with CompatibleLUNA(address, port) as luna:
 
 <warning><code>CompatibleLUNA</code> 类型必须经过上下文管理语句使用！</warning>
 
-## 固高运动控制卡交互类型（MotorController与MotorJogMode）
+## 固高运动控制卡交互类型（MotorController, MotorJogMode）
 <warning><code>MotorController</code> 与 <code>MotorJogMode</code> 不能同时实例化！</warning>
 
 ### MotorController （电机运动控制类型）
@@ -313,3 +370,54 @@ motor.open()
 ```python
 motor.close()
 ```
+
+## EtherCAT电机交互类型（MotorWithEtherCAT）
+
+**导入方法：**
+```python 
+from Models_in_one.utils.hardware.Motors import MotorWithEtherCAT
+```
+<deflist collapsible="true">
+<def title="reset_motor()">
+调用 DLL 的 resetMotor 函数以重置电机
+</def>
+<def title="enable_motor()">
+调用 DLL 的 enableMotor 函数以启用电机
+</def>
+<def title="set_tension_ctrl(tension_val)">
+设置张力控制值，输入为张力数组（Data 或 list）
+</def>
+<def title="set_length_ctrl(encoder_val=None)">
+设置长度控制值，支持可选的编码器参考值（None 表示默认）
+</def>
+<def title="set_preload(preload_value)">
+设置预加载值，输入为数组（list）
+</def>
+<def title="set_force_slope(slope_value)">
+设置力的斜率，输入为 32 位无符号整数
+</def>
+<def title="set_pos_ctrl_params(max_velocity, velocity, acceleration, deceleration)">
+设置位置控制参数，包括最大速度、目标速度、加速度和减速度
+</def>
+<def title="get_tendon_tension() -> Data">
+获取张力数据，返回为 Data 对象
+</def>
+<def title="get_encoder() -> Data">
+获取编码器数据，返回为 Data 对象
+</def>
+<def title="get_tendon_length(encoder_ref_val)">
+根据编码器参考值获取张力长度，返回为 Data 对象
+</def>
+<def title="get_tendon_velocity()">
+获取张力速度数据，返回为 Data 对象
+</def>
+<def title="ctrl_tension(target_tension)">
+控制张力值，输入为目标张力数组（Data 或 list）
+</def>
+<def title="ctrl_length(target_length, encoder_ref_val=None)">
+控制长度值，输入为目标长度数组和可选的编码器参考值
+</def>
+</deflist>
+
+
+
