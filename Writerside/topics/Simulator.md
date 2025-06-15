@@ -1,6 +1,6 @@
 # Simulator
 
-## 仿真类（QTSimulator）
+## 仿真类（VisCR）
 该模块提供与可视化仿真程序<path>VisCR</path>之间的交互类`QTSimulator`。仅需简单的步骤即可使用连续体机器人运动学可视化仿真。
 
 <note>
@@ -10,7 +10,7 @@
 
 **导入方法：**
 ```python 
-from Models_in_one.utils.connect_to_qt import QTSimulator
+from Models_in_one.utils.vis_cr import VisCR
 ```
 
 <deflist collapsible="true">
@@ -40,19 +40,25 @@ def sample_func(step: int) -> list[numpy.ndarray]:
 		res.append(get_T(theta/100*(i+1), phi, L/100*(i+1)))  # get_T是计算恒曲率齐次变换矩阵的函数。
 	return res
 ```
-然后使用`QTSimulator`的`set_one_step_fun`设置到仿真类中。
+然后使用`VisCR`的`set_one_step_fun`设置到仿真类中。
 
 <warning>一定要保证设置函数的参数与返回值与要求的保持一致</warning>
 
 <warning>由于<path>OpenGL</path>的坐标系问题，请使用本模块提供的旋转矩阵进行计算</warning>
 <deflist  collapsible="true">
-<def title="rotate_4x4(axis, angle)">
+<def title="rotate_4x4(axis: str, angle: float)">
 返回绕<code>axis</code>旋转<code>angle</code>弧度的旋转矩阵。
 </def>
-<def title="displacement_4x4(x, y, z)">
+<def title="displacement_4x4(x: float, y: float, z: float)">
 返回平移矩阵。
 </def>
-<def title="default_one_step(step)">
+<def title="convert_matrix_to_OpenGL_matrix(matrix: np.ndarray)">
+返回<path>OpenGL</path>下对应的右手坐标系下的齐次变换矩阵转。
+</def>
+<def title="tip_force_matrix(f_x: float, f_y: float, f_z: float)">
+返回所需要的三维力矩阵，用于添加在序列的最末端。
+</def>
+<def title="default_one_step(step: int)">
 简单的实例仿真步函数
 </def>
 </deflist>
@@ -72,7 +78,7 @@ def sample_func(step: int) -> list[numpy.ndarray]:
 
 ```Python
 import numpy
-from Models_in_one.utils.connect_to_qt import QTSimulator
+from Models_in_one.utils.vis_cr import VisCR
 
 
 def sample_func(step: int) -> list[numpy.ndarray]: 
@@ -80,7 +86,7 @@ def sample_func(step: int) -> list[numpy.ndarray]:
     return res
 
 
-my_simulator = QTSimulator()
+my_simulator = VisCR()
 my_simulator.set_one_step_func(sample_func)
 my_simulator.connect()
 my_simulator.run()
