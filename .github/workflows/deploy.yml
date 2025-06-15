@@ -40,7 +40,7 @@ jobs:
             docker-version: ${{ env.DOCKER_VERSION }}
 
         - name: Upload documentation
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: docs
             path: |
@@ -50,7 +50,7 @@ jobs:
 
 # Add the step below to upload Algolia indexes
         - name: Upload algolia-indexes
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: algolia-indexes
             path: artifacts/${{ env.ALGOLIA_ARTIFACT }}
@@ -64,13 +64,13 @@ jobs:
 
         steps:
             - name: Download artifacts
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: docs
                 path: artifacts
 
             - name: Test documentation
-              uses: JetBrains/writerside-checker-action@v1
+              uses: JetBrains/writerside-checker-action@v4
               with:
                 instance: ${{ env.INSTANCE }}
 
@@ -83,7 +83,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Download artifact
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: docs
 
@@ -94,10 +94,10 @@ jobs:
               uses: actions/configure-pages@v2
 
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v1
+              uses: actions/upload-pages-artifact@v4
               with:
                 path: dir
 
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v1
+              uses: actions/deploy-pages@v4
