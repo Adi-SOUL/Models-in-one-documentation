@@ -71,6 +71,17 @@ def sample_func(step: int) -> list[numpy.ndarray]:
         <code-block lang="shell">
             viscr
         </code-block>
+        <note>        
+            第一次运行程序时，请首先使用如下命令打开并修改设置<path>.json</path>文件的位置：
+            <code-block lang="shell">
+                viscr ini
+            </code-block>
+            或者使用如下命令修改默认设置<path>.json</path>文件：
+            <code-block lang="shell">
+                viscr json
+            </code-block>
+            未正确设置上述文件可能导致程序的意外退出。
+        </note>
     </step>
 
 <step>
